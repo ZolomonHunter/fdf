@@ -130,98 +130,125 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named fdf.c
+# Target rules for targets named fdf
 
 # Build rule for target.
-fdf.c: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fdf.c
-.PHONY : fdf.c
+fdf: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fdf
+.PHONY : fdf
 
 # fast build rule for target.
-fdf.c/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/build
-.PHONY : fdf.c/fast
+fdf/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/build
+.PHONY : fdf/fast
 
-ft_split.o: ft_split.c.o
+fdf.o: fdf.c.o
 
-.PHONY : ft_split.o
-
-# target to build an object file
-ft_split.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/ft_split.c.o
-.PHONY : ft_split.c.o
-
-ft_split.i: ft_split.c.i
-
-.PHONY : ft_split.i
-
-# target to preprocess a source file
-ft_split.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/ft_split.c.i
-.PHONY : ft_split.c.i
-
-ft_split.s: ft_split.c.s
-
-.PHONY : ft_split.s
-
-# target to generate assembly for a file
-ft_split.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/ft_split.c.s
-.PHONY : ft_split.c.s
-
-get_next_line.o: get_next_line.c.o
-
-.PHONY : get_next_line.o
+.PHONY : fdf.o
 
 # target to build an object file
-get_next_line.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line.c.o
-.PHONY : get_next_line.c.o
+fdf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/fdf.c.o
+.PHONY : fdf.c.o
 
-get_next_line.i: get_next_line.c.i
+fdf.i: fdf.c.i
 
-.PHONY : get_next_line.i
+.PHONY : fdf.i
 
 # target to preprocess a source file
-get_next_line.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line.c.i
-.PHONY : get_next_line.c.i
+fdf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/fdf.c.i
+.PHONY : fdf.c.i
 
-get_next_line.s: get_next_line.c.s
+fdf.s: fdf.c.s
 
-.PHONY : get_next_line.s
+.PHONY : fdf.s
 
 # target to generate assembly for a file
-get_next_line.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line.c.s
-.PHONY : get_next_line.c.s
+fdf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/fdf.c.s
+.PHONY : fdf.c.s
 
-get_next_line_utils.o: get_next_line_utils.c.o
+gnl/get_next_line.o: gnl/get_next_line.c.o
 
-.PHONY : get_next_line_utils.o
+.PHONY : gnl/get_next_line.o
 
 # target to build an object file
-get_next_line_utils.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line_utils.c.o
-.PHONY : get_next_line_utils.c.o
+gnl/get_next_line.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line.c.o
+.PHONY : gnl/get_next_line.c.o
 
-get_next_line_utils.i: get_next_line_utils.c.i
+gnl/get_next_line.i: gnl/get_next_line.c.i
 
-.PHONY : get_next_line_utils.i
+.PHONY : gnl/get_next_line.i
 
 # target to preprocess a source file
-get_next_line_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line_utils.c.i
-.PHONY : get_next_line_utils.c.i
+gnl/get_next_line.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line.c.i
+.PHONY : gnl/get_next_line.c.i
 
-get_next_line_utils.s: get_next_line_utils.c.s
+gnl/get_next_line.s: gnl/get_next_line.c.s
 
-.PHONY : get_next_line_utils.s
+.PHONY : gnl/get_next_line.s
 
 # target to generate assembly for a file
-get_next_line_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/get_next_line_utils.c.s
-.PHONY : get_next_line_utils.c.s
+gnl/get_next_line.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line.c.s
+.PHONY : gnl/get_next_line.c.s
+
+gnl/get_next_line_utils.o: gnl/get_next_line_utils.c.o
+
+.PHONY : gnl/get_next_line_utils.o
+
+# target to build an object file
+gnl/get_next_line_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o
+.PHONY : gnl/get_next_line_utils.c.o
+
+gnl/get_next_line_utils.i: gnl/get_next_line_utils.c.i
+
+.PHONY : gnl/get_next_line_utils.i
+
+# target to preprocess a source file
+gnl/get_next_line_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.i
+.PHONY : gnl/get_next_line_utils.c.i
+
+gnl/get_next_line_utils.s: gnl/get_next_line_utils.c.s
+
+.PHONY : gnl/get_next_line_utils.s
+
+# target to generate assembly for a file
+gnl/get_next_line_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.s
+.PHONY : gnl/get_next_line_utils.c.s
+
+map_parse.o: map_parse.c.o
+
+.PHONY : map_parse.o
+
+# target to build an object file
+map_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/map_parse.c.o
+.PHONY : map_parse.c.o
+
+map_parse.i: map_parse.c.i
+
+.PHONY : map_parse.i
+
+# target to preprocess a source file
+map_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/map_parse.c.i
+.PHONY : map_parse.c.i
+
+map_parse.s: map_parse.c.s
+
+.PHONY : map_parse.s
+
+# target to generate assembly for a file
+map_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/map_parse.c.s
+.PHONY : map_parse.c.s
 
 # Help Target
 help:
@@ -231,16 +258,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... fdf.c"
-	@echo "... ft_split.o"
-	@echo "... ft_split.i"
-	@echo "... ft_split.s"
-	@echo "... get_next_line.o"
-	@echo "... get_next_line.i"
-	@echo "... get_next_line.s"
-	@echo "... get_next_line_utils.o"
-	@echo "... get_next_line_utils.i"
-	@echo "... get_next_line_utils.s"
+	@echo "... fdf"
+	@echo "... fdf.o"
+	@echo "... fdf.i"
+	@echo "... fdf.s"
+	@echo "... gnl/get_next_line.o"
+	@echo "... gnl/get_next_line.i"
+	@echo "... gnl/get_next_line.s"
+	@echo "... gnl/get_next_line_utils.o"
+	@echo "... gnl/get_next_line_utils.i"
+	@echo "... gnl/get_next_line_utils.s"
+	@echo "... map_parse.o"
+	@echo "... map_parse.i"
+	@echo "... map_parse.s"
 .PHONY : help
 
 

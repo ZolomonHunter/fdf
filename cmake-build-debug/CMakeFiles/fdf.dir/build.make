@@ -89,59 +89,59 @@ CMakeFiles/fdf.dir/fdf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/fdf.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/fdf.c -o CMakeFiles/fdf.dir/fdf.c.s
 
-CMakeFiles/fdf.dir/ft_split.c.o: CMakeFiles/fdf.dir/flags.make
-CMakeFiles/fdf.dir/ft_split.c.o: ../ft_split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/fdf.dir/ft_split.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/ft_split.c.o -c /Users/jangelia/fdf/ft_split.c
+CMakeFiles/fdf.dir/map_parse.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/map_parse.c.o: ../map_parse.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/fdf.dir/map_parse.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/map_parse.c.o -c /Users/jangelia/fdf/map_parse.c
 
-CMakeFiles/fdf.dir/ft_split.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/ft_split.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/ft_split.c > CMakeFiles/fdf.dir/ft_split.c.i
+CMakeFiles/fdf.dir/map_parse.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/map_parse.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/map_parse.c > CMakeFiles/fdf.dir/map_parse.c.i
 
-CMakeFiles/fdf.dir/ft_split.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/ft_split.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/ft_split.c -o CMakeFiles/fdf.dir/ft_split.c.s
+CMakeFiles/fdf.dir/map_parse.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/map_parse.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/map_parse.c -o CMakeFiles/fdf.dir/map_parse.c.s
 
-CMakeFiles/fdf.dir/get_next_line.c.o: CMakeFiles/fdf.dir/flags.make
-CMakeFiles/fdf.dir/get_next_line.c.o: ../get_next_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/fdf.dir/get_next_line.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/get_next_line.c.o -c /Users/jangelia/fdf/get_next_line.c
+CMakeFiles/fdf.dir/gnl/get_next_line.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/gnl/get_next_line.c.o: ../gnl/get_next_line.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/fdf.dir/gnl/get_next_line.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/gnl/get_next_line.c.o -c /Users/jangelia/fdf/gnl/get_next_line.c
 
-CMakeFiles/fdf.dir/get_next_line.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/get_next_line.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/get_next_line.c > CMakeFiles/fdf.dir/get_next_line.c.i
+CMakeFiles/fdf.dir/gnl/get_next_line.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/gnl/get_next_line.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/gnl/get_next_line.c > CMakeFiles/fdf.dir/gnl/get_next_line.c.i
 
-CMakeFiles/fdf.dir/get_next_line.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/get_next_line.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/get_next_line.c -o CMakeFiles/fdf.dir/get_next_line.c.s
+CMakeFiles/fdf.dir/gnl/get_next_line.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/gnl/get_next_line.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/gnl/get_next_line.c -o CMakeFiles/fdf.dir/gnl/get_next_line.c.s
 
-CMakeFiles/fdf.dir/get_next_line_utils.c.o: CMakeFiles/fdf.dir/flags.make
-CMakeFiles/fdf.dir/get_next_line_utils.c.o: ../get_next_line_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/fdf.dir/get_next_line_utils.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/get_next_line_utils.c.o -c /Users/jangelia/fdf/get_next_line_utils.c
+CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o: CMakeFiles/fdf.dir/flags.make
+CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o: ../gnl/get_next_line_utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o -c /Users/jangelia/fdf/gnl/get_next_line_utils.c
 
-CMakeFiles/fdf.dir/get_next_line_utils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/get_next_line_utils.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/get_next_line_utils.c > CMakeFiles/fdf.dir/get_next_line_utils.c.i
+CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jangelia/fdf/gnl/get_next_line_utils.c > CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.i
 
-CMakeFiles/fdf.dir/get_next_line_utils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/get_next_line_utils.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/get_next_line_utils.c -o CMakeFiles/fdf.dir/get_next_line_utils.c.s
+CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jangelia/fdf/gnl/get_next_line_utils.c -o CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.s
 
 # Object files for target fdf
 fdf_OBJECTS = \
 "CMakeFiles/fdf.dir/fdf.c.o" \
-"CMakeFiles/fdf.dir/ft_split.c.o" \
-"CMakeFiles/fdf.dir/get_next_line.c.o" \
-"CMakeFiles/fdf.dir/get_next_line_utils.c.o"
+"CMakeFiles/fdf.dir/map_parse.c.o" \
+"CMakeFiles/fdf.dir/gnl/get_next_line.c.o" \
+"CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o"
 
 # External object files for target fdf
 fdf_EXTERNAL_OBJECTS =
 
 fdf: CMakeFiles/fdf.dir/fdf.c.o
-fdf: CMakeFiles/fdf.dir/ft_split.c.o
-fdf: CMakeFiles/fdf.dir/get_next_line.c.o
-fdf: CMakeFiles/fdf.dir/get_next_line_utils.c.o
+fdf: CMakeFiles/fdf.dir/map_parse.c.o
+fdf: CMakeFiles/fdf.dir/gnl/get_next_line.c.o
+fdf: CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o
 fdf: CMakeFiles/fdf.dir/build.make
 fdf: CMakeFiles/fdf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable fdf"

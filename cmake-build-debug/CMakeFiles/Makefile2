@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = /Users/jangelia/fdf/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/fdf.c.dir/all
+all: CMakeFiles/fdf.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/fdf.c.dir/clean
+clean: CMakeFiles/fdf.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/fdf.c.dir
+# Target rules for target CMakeFiles/fdf.dir
 
 # All Build rule for target.
-CMakeFiles/fdf.c.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target fdf.c"
-.PHONY : CMakeFiles/fdf.c.dir/all
+CMakeFiles/fdf.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jangelia/fdf/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target fdf"
+.PHONY : CMakeFiles/fdf.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/fdf.c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangelia/fdf/cmake-build-debug/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/fdf.c.dir/all
+CMakeFiles/fdf.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangelia/fdf/cmake-build-debug/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/fdf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jangelia/fdf/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/fdf.c.dir/rule
+.PHONY : CMakeFiles/fdf.dir/rule
 
 # Convenience name for target.
-fdf.c: CMakeFiles/fdf.c.dir/rule
+fdf: CMakeFiles/fdf.dir/rule
 
-.PHONY : fdf.c
+.PHONY : fdf
 
 # clean rule for target.
-CMakeFiles/fdf.c.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.c.dir/build.make CMakeFiles/fdf.c.dir/clean
-.PHONY : CMakeFiles/fdf.c.dir/clean
+CMakeFiles/fdf.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fdf.dir/build.make CMakeFiles/fdf.dir/clean
+.PHONY : CMakeFiles/fdf.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

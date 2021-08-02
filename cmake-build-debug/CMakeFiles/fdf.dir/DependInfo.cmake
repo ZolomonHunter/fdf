@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jangelia/fdf/fdf.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/fdf.c.o"
-  "/Users/jangelia/fdf/ft_split.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/ft_split.c.o"
-  "/Users/jangelia/fdf/get_next_line.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/get_next_line.c.o"
-  "/Users/jangelia/fdf/get_next_line_utils.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/get_next_line_utils.c.o"
+  "/Users/jangelia/fdf/gnl/get_next_line.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/gnl/get_next_line.c.o"
+  "/Users/jangelia/fdf/gnl/get_next_line_utils.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/gnl/get_next_line_utils.c.o"
+  "/Users/jangelia/fdf/map_parse.c" "/Users/jangelia/fdf/cmake-build-debug/CMakeFiles/fdf.dir/map_parse.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
