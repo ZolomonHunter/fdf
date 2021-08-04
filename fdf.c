@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 
-
 void check_leaks();
 
 int init_check(int argc, char *fd_str)
@@ -47,14 +46,6 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Map parse error", 1);
 		return (-1);
 	}
-//	t_line *line = map->first_line;
-//	while (line)
-//	{
-//		for(int i = 0; i < line->length; i++)
-//			printf("%d,%d  ", line->p_arr[i].x, line->p_arr[i].y);
-//		line = line->next;
-//		printf("\n");
-//	}
 	if (close(map_fd) == -1)
 	{
 		perror(strerror(errno));
