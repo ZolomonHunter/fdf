@@ -10,35 +10,58 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+
+void check_leaks();
+
+int init_check(int argc, char *fd_str)
 {
-	int		map_fd;
-	t_map	*map;
+	int map_fd;
 
 	if (argc != 2)
 	{
 		ft_putendl_fd("Args error", 1);
 		return (-1);
 	}
-	map_fd = open(argv[1], O_RDONLY);
+	map_fd = open(fd_str, O_RDONLY);
 	if (map_fd == -1)
 	{
 		perror(strerror(errno));
 		return (-1);
 	}
+	return (map_fd);
+}
+
+int	main(int argc, char **argv)
+{
+	int map_fd;
+	t_map *map;
+
+	map_fd = init_check(argc, argv[1]);
+	if (map_fd == -1)
+		return (-1);
 	map = ft_parse_map(map_fd);
 	if (map == 0)
 	{
 		ft_putendl_fd("Map parse error", 1);
 		return (-1);
 	}
-	start_mlx(map);
+//	t_line *line = map->first_line;
+//	while (line)
+//	{
+//		for(int i = 0; i < line->length; i++)
+//			printf("%d,%d  ", line->p_arr[i].x, line->p_arr[i].y);
+//		line = line->next;
+//		printf("\n");
+//	}
 	if (close(map_fd) == -1)
 	{
 		perror(strerror(errno));
+		ft_map_clear(map, 0);
 		return (-1);
 	}
+	start_mlx(map);
+	ft_map_clear(map, 0);
+//	check_leaks();
 }
