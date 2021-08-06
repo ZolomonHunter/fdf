@@ -81,7 +81,7 @@ void ft_zoom_map(t_map *map, double scale)
 		{
 			line->p_arr[i].x = line->p_arr[i].x * scale;
 			line->p_arr[i].y = line->p_arr[i].y * scale;
-			line->p_arr[i].y = line->p_arr[i].z * scale;
+			line->p_arr[i].z = line->p_arr[i].z * scale;
 			i++;
 		}
 		line = line->next;
@@ -95,17 +95,18 @@ void ft_rotate_coordinates(t_point *point, int angle, char axis)
 {
 	if (axis == 'x')
 	{
-		point->y = point->y * cos(angle * 3.14 / 180) - point->z * sin(angle * 3.14 / 180);
+		point->y = point->y * cos(angle * 3.14 / 180) + (-1) * point->z * sin(angle * 3.14 / 180);
 		point->z = point->y * sin(angle * 3.14 / 180) + point->z * cos(angle * 3.14 / 180);
+
 	}
 	else if (axis == 'y')
 	{
-		point->x = point->x * cos(angle * 3.14 / 180) + point->z * sin(angle * 3.14 / 180);
-		point->z = (-1) * point->x * sin(angle * 3.14 / 180) + point->z * cos(angle * 3.14 / 180);
+		point->x = point->x * cos(angle * 3.14 / 180) - point->z * sin(angle * 3.14 / 180);
+		point->z = point->x * sin(angle * 3.14 / 180) + point->z * cos(angle * 3.14 / 180);
 	}
 	else
 	{
-		point->x = point->x * cos(angle * 3.14 / 180) - point->y * sin(angle * 3.14 / 180);
+		point->x = point->x * cos(angle * 3.14 / 180) + (-1) * point->y * sin(angle * 3.14 / 180);
 		point->y = point->x * sin(angle * 3.14 / 180) + point->y * cos(angle * 3.14 / 180);
 	}
 }
@@ -114,7 +115,13 @@ void ft_rotate_map(t_map *map, int angle, char axis)
 {
 	t_line *line;
 	int	i;
+	double back_move_x;
+	double back_move_y;
+	double back_move_z;
 
+	back_move_x = map->first_line->p_arr[0].x;
+	back_move_y = map->first_line->p_arr[0].y;
+	back_move_z = map->first_line->p_arr[0].z;
 	i = 0;
 	line = map->first_line;
 	while (line)
@@ -122,12 +129,13 @@ void ft_rotate_map(t_map *map, int angle, char axis)
 		while (i < line->length)
 		{
 			ft_rotate_coordinates(&(line->p_arr[i]), angle, axis);
-
 			i++;
 		}
 		line = line->next;
 		i = 0;
 	}
+	ft_move_map(map, back_move_x - map->first_line->p_arr[0].x, back_move_y - map->first_line->p_arr[0].y,
+				back_move_z - map->first_line->p_arr[0].z);
 }
 
 
@@ -167,13 +175,13 @@ void my_mlx_clear_image(t_data *img)
 int ft_key_hdl(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_A)
-		ft_move_map(vars->map, MOVE_STEP, 0);
+		ft_move_map(vars->map, MOVE_STEP, 0, 0);
 	else if (keycode == KEY_D)
-		ft_move_map(vars->map, MOVE_STEP * (-1), 0);
+		ft_move_map(vars->map, MOVE_STEP * (-1), 0, 0);
 	else if (keycode == KEY_W)
-		ft_move_map(vars->map, 0, MOVE_STEP);
+		ft_move_map(vars->map, 0, MOVE_STEP, 0);
 	else if (keycode == KEY_S)
-		ft_move_map(vars->map, 0, MOVE_STEP * (-1));
+		ft_move_map(vars->map, 0, MOVE_STEP * (-1), 0);
 	else if (keycode == KEY_Z)
 		ft_rotate_map(vars->map, ROTATE_STEP, 'z');
 	else if (keycode == KEY_X)

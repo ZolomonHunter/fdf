@@ -41,6 +41,7 @@ typedef struct	s_map
 {
 	int 		height;
 	t_line 		*first_line;
+	t_point 	*center;
 }				t_map;
 
 typedef struct	s_data

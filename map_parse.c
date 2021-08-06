@@ -32,6 +32,8 @@ int	ft_map_clear(t_map *map, char *line)
 		free(cur);
 		map->first_line = 0;
 	}
+	if (map && map->center)
+		free(map->center);
 	if (map)
 		free(map);
 	if (line)
@@ -114,8 +116,17 @@ int ft_fill_line(char **splited_line, t_map *map, int line_number, int width)
 t_map *ft_end_parse_map(t_map *map, char *line, int line_number)
 {
 	if (line)
+	{
 		free(line);
+		line = 0;
+	}
 	map->height = line_number;
+	map->center = malloc(sizeof(t_point));
+	if (map->center == 0)
+		return (ft_free_map_norm(map, line));
+	map->center->x = (double)map->first_line->length / 2;
+	map->center->y = (double)map->height / 2;
+	map->center->z = 0;
 	return (map);
 }
 
