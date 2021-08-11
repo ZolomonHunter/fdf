@@ -12,38 +12,9 @@
 
 #include "fdf.h"
 
-int	ft_map_clear(t_map *map, char *line)
+static int	ft_array_size(char **arr)
 {
-	t_line *cur;
-	t_line *next;
-
-	if (map && map->first_line)
-	{
-		cur = map->first_line;
-		next = cur->next;
-		while (next)
-		{
-			free(cur->p_arr);
-			free(cur);
-			cur = next;
-			next = cur->next;
-		}
-		free(cur->p_arr);
-		free(cur);
-		map->first_line = 0;
-	}
-	if (map && map->center)
-		free(map->center);
-	if (map)
-		free(map);
-	if (line)
-		free(line);
-	return (0);
-}
-
-int ft_array_size(char **arr)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -51,69 +22,36 @@ int ft_array_size(char **arr)
 	return (i);
 }
 
-t_map *ft_free_map_norm(t_map *map, char *line)
+void	ft_set_color(t_point *point, char *info)
 {
-	ft_map_clear(map, line);
-	return (0);
-}
+	int	i;
+	int	j;
 
-t_line	*ft_create_line(int width)
-{
-	t_line *new_line;
-
-	new_line = malloc(sizeof(t_line));
-	if (!new_line)
-		return (0);
-	new_line->p_arr = malloc(sizeof(t_point) * width);
-	if (!new_line->p_arr)
-		return (0);
-	new_line->length = width;
-	return (new_line);
-}
-
-void ft_push_line(t_map *map, t_line *new_line)
-{
-	t_line	*cur;
-
-	if (map->first_line == 0)
-	{
-		map->first_line = new_line;
-		return ;
-	}
-	cur = map->first_line;
-	while (cur->next)
-	{
-		cur = cur->next;
-	}
-	cur->next = new_line;
-}
-
-int ft_fill_line(char **splited_line, t_map *map, int line_number, int width)
-{
-	int i;
-	t_line *new_line;
-
+	point->color = 0;
 	i = 0;
-	new_line = ft_create_line(width);
-	if (!new_line)
-		return (0);
-	new_line->next = 0;
-	while (splited_line[i])
-	{
-		new_line->p_arr[i].x = i;
-		new_line->p_arr[i].y = line_number;
-		new_line->p_arr[i].z = ft_atoi(splited_line[i]);
-		new_line->p_arr[i].color = 0x00FFFFFF;
-		free(splited_line[i]);
+	j = 0;
+	while (info[i] != 'x' && info[i])
 		i++;
+	if (info[i] == 'x')
+	{
+		i++;
+		while ((info[i] >= '0' && info[i] <= '9')
+			|| (info[i] >= 'a' && info[i] <= 'f')
+			|| (info[i] >= 'A' && info[i] <= 'F'))
+		{
+			if (info[i] >= '0' && info[i] <= '9')
+				point->color += (info[i] - '0') * pow(16, j);
+			else if (info[i] >= 'a' && info[i] <= 'f')
+				point->color += (info[i] - 'a' + 10 ) * pow(16, j);
+			else if (info[i] >= 'A' && info[i] <= 'F')
+				point->color += (info[i] - 'A' + 10 ) * pow(16, j);
+			j++;
+			i++;
+		}
 	}
-	free(splited_line[i]);
-	free(splited_line);
-	ft_push_line(map, new_line);
-	return (1);
 }
 
-t_map *ft_end_parse_map(t_map *map, char *line, int line_number)
+t_map	*ft_end_parse_map(t_map *map, char *line, int line_number)
 {
 	if (line)
 	{
@@ -124,18 +62,19 @@ t_map *ft_end_parse_map(t_map *map, char *line, int line_number)
 	map->center = malloc(sizeof(t_point));
 	if (map->center == 0)
 		return (ft_free_map_norm(map, line));
-	map->center->x = (double)map->first_line->length / 2;
-	map->center->y = (double)map->height / 2;
+	map->center->x = (double)map->first_line->length / 2 - 1;
+	map->center->y = (double)(map->height - 1) / 2;
 	map->center->z = 0;
+	map->center->color = 0x00FF0000;
 	return (map);
 }
 
 t_map	*ft_start_parse_map(t_map *map, char *line, int map_fd)
 {
-	int gnl_return;
-	char **splited_line;
-	int line_number;
-	int	width;
+	int		gnl_return;
+	char	**splited_line;
+	int		line_number;
+	int		width;
 
 	gnl_return = get_next_line(map_fd, &line);
 	if (gnl_return == -1)
@@ -161,7 +100,7 @@ t_map	*ft_start_parse_map(t_map *map, char *line, int map_fd)
 t_map	*ft_parse_map(int map_fd)
 {
 	t_map	*map;
-	char 	*line;
+	char	*line;
 
 	line = 0;
 	map = malloc(sizeof(*map));

@@ -1,5 +1,9 @@
 SRCS = map_parse.c\
 	   mlx_drawing.c\
+	   wu_algorithm.c\
+	   map_operations.c\
+	   map_parse_utils.c\
+	   my_mlx_func.c\
 	   fdf.c
 OBJS = $(SRCS:.c=.o)
 NAME = fdf

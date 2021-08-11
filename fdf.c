@@ -12,11 +12,9 @@
 
 #include "fdf.h"
 
-void check_leaks();
-
-int init_check(int argc, char *fd_str)
+int	init_check(int argc, char *fd_str)
 {
-	int map_fd;
+	int	map_fd;
 
 	if (argc != 2)
 	{
@@ -34,8 +32,8 @@ int init_check(int argc, char *fd_str)
 
 int	main(int argc, char **argv)
 {
-	int map_fd;
-	t_map *map;
+	int		map_fd;
+	t_map	*map;
 
 	map_fd = init_check(argc, argv[1]);
 	if (map_fd == -1)
@@ -49,10 +47,9 @@ int	main(int argc, char **argv)
 	if (close(map_fd) == -1)
 	{
 		perror(strerror(errno));
-		ft_map_clear(map, 0);
+		ft_free_map_norm(map, 0);
 		return (-1);
 	}
 	start_mlx(map);
-	ft_map_clear(map, 0);
-//	check_leaks();
+	ft_free_map_norm(map, 0);
 }

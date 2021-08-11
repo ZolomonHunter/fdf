@@ -24,10 +24,10 @@
 
 typedef struct	s_point
 {
-	double 		x;
-	double 		y;
-	double 		z;
-	int			color;
+	double 			x;
+	double 			y;
+	double 			z;
+	unsigned int	color;
 }				t_point;
 
 typedef struct 		s_line
@@ -53,7 +53,8 @@ typedef struct	s_data
 	int			endian;
 }				t_data;
 
-typedef struct	s_vars {
+typedef struct	s_vars
+{
 	void	*mlx;
 	void	*win;
 	t_data 	img;
@@ -61,15 +62,26 @@ typedef struct	s_vars {
 }				t_vars;
 
 t_map	*ft_parse_map(int map_fd);
-int		ft_map_clear(t_map *map, char *line);
 void	start_mlx(t_map *map);
+void	my_mlx_pixel_put(t_data *img, int x, int y, int color);
+void	my_mlx_clear_image(t_data *img);
+void	ft_line_x_iter(t_point *a, t_point *b, t_vars *vars);
+void	ft_line_y_iter(t_point *a, t_point *b, t_vars *vars);
+unsigned int ft_get_max_color(t_point *f, t_point *s);
+void	ft_move_map(t_map *map, double x, double y, double z);
+void	ft_zoom_map(t_map *map, double scale);
+void	ft_rotate_map(t_map *map, int angle, char axis);
+void	ft_centre_map(t_map *map);
+t_map *ft_free_map_norm(t_map *map, char *line);
+int		ft_fill_line(char **splited_line, t_map *map, int line_number, int width);
+void	ft_set_color(t_point *point, char *info);
 
 
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
-# define MOVE_STEP 50
-# define ROTATE_STEP 10
-# define ZOOM_STEP 1.2
+# define MOVE_STEP 5
+# define ROTATE_STEP 2
+# define ZOOM_STEP 1.05
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -110,6 +122,7 @@ void	start_mlx(t_map *map);
 # define KEY_N 45
 # define KEY_M 46
 # define KEY_TAB 48
+# define KEY_ESC 53
 # define KEY_PLUS 69
 # define KEY_MINUS 78
 # define KEY_LEFT 123

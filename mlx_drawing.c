@@ -12,169 +12,61 @@
 
 #include "fdf.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	ft_draw_line(t_point *a, t_point *b, t_vars *vars)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void 	ft_draw_map(t_vars *vars, t_map *map)
-{
-	t_line *line;
-	int	i;
-
-	i = 0;
-	line = map->first_line;
-	while (line)
-	{
-		while (i < line->length)
-		{
-			my_mlx_pixel_put(&vars->img, (int)line->p_arr[i].x, (int)line->p_arr[i].y,
-							 line->p_arr[i].color);
-			i++;
-		}
-		line = line->next;
-		i = 0;
-	}
-}
-
-
-void ft_move_map(t_map *map, double x, double y, double z)
-{
-	t_line *line;
-	int	i;
-
-	i = 0;
-	line = map->first_line;
-	while (line)
-	{
-		while (i < line->length)
-		{
-			line->p_arr[i].x += x;
-			line->p_arr[i].y += y;
-			line->p_arr[i].z += z;
-			i++;
-		}
-		line = line->next;
-		i = 0;
-	}
-}
-
-void ft_zoom_map(t_map *map, double scale)
-{
-	t_line *line;
-	int	i;
-	double back_move_x;
-	double back_move_y;
-	double back_move_z;
-
-	i = 0;
-	line = map->first_line;
-	back_move_x = line->p_arr[i].x * scale - line->p_arr[i].x;
-	back_move_y = line->p_arr[i].y * scale - line->p_arr[i].y;
-	back_move_z = line->p_arr[i].z * scale - line->p_arr[i].z;
-	while (line)
-	{
-		while (i < line->length)
-		{
-			line->p_arr[i].x = line->p_arr[i].x * scale;
-			line->p_arr[i].y = line->p_arr[i].y * scale;
-			line->p_arr[i].z = line->p_arr[i].z * scale;
-			i++;
-		}
-		line = line->next;
-		i = 0;
-	}
-	ft_move_map(map, back_move_x * (-1), back_move_y * (-1), back_move_z * (-1));
-}
-
-
-void ft_rotate_coordinates(t_point *point, int angle, char axis)
-{
-	if (axis == 'x')
-	{
-		point->y = point->y * cos(angle * 3.14 / 180) + (-1) * point->z * sin(angle * 3.14 / 180);
-		point->z = point->y * sin(angle * 3.14 / 180) + point->z * cos(angle * 3.14 / 180);
-
-	}
-	else if (axis == 'y')
-	{
-		point->x = point->x * cos(angle * 3.14 / 180) - point->z * sin(angle * 3.14 / 180);
-		point->z = point->x * sin(angle * 3.14 / 180) + point->z * cos(angle * 3.14 / 180);
-	}
+	if (fabs(b->x - a->x) == 0)
+		ft_line_y_iter(a, b, vars);
+	else if (fabs(b->y - a->y) == 0)
+		ft_line_x_iter(a, b, vars);
 	else
 	{
-		point->x = point->x * cos(angle * 3.14 / 180) + (-1) * point->y * sin(angle * 3.14 / 180);
-		point->y = point->x * sin(angle * 3.14 / 180) + point->y * cos(angle * 3.14 / 180);
+		if (fabs(b->y - a->y) / fabs(b->x - a->x) >= 1)
+		{
+			if (a->y < b->y)
+				ft_line_y_iter(a, b, vars);
+			else
+				ft_line_y_iter(b, a, vars);
+		}
+		else
+		{
+			if (a->x < b->x)
+				ft_line_x_iter(a, b, vars);
+			else
+				ft_line_x_iter(b, a, vars);
+		}
 	}
 }
 
-void ft_rotate_map(t_map *map, int angle, char axis)
+void	ft_draw_map(t_vars *vars, t_map *map)
 {
-	t_line *line;
-	int	i;
-	double back_move_x;
-	double back_move_y;
-	double back_move_z;
+	t_line	*line;
+	t_line	*prev_line;
+	int		i;
 
-	back_move_x = map->first_line->p_arr[0].x;
-	back_move_y = map->first_line->p_arr[0].y;
-	back_move_z = map->first_line->p_arr[0].z;
 	i = 0;
+	prev_line = 0;
 	line = map->first_line;
 	while (line)
 	{
 		while (i < line->length)
 		{
-			ft_rotate_coordinates(&(line->p_arr[i]), angle, axis);
+			if (prev_line && i < prev_line->length)
+				ft_draw_line(&(prev_line->p_arr[i]), &(line->p_arr[i]), vars);
+			if (i > 0)
+				ft_draw_line(&(line->p_arr[i - 1]), &(line->p_arr[i]), vars);
 			i++;
 		}
+		prev_line = line;
 		line = line->next;
 		i = 0;
 	}
-	ft_move_map(map, back_move_x - map->first_line->p_arr[0].x, back_move_y - map->first_line->p_arr[0].y,
-				back_move_z - map->first_line->p_arr[0].z);
 }
 
-
-int ft_max_2(int a, int b)
+int	ft_key_hdl(int keycode, t_vars *vars)
 {
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-void ft_centre_map(t_map *map)
-{
-	ft_zoom_map(map, SCREEN_WIDTH / 2 / (ft_max_2(map->first_line->length, map->height) + 10));
-	ft_move_map(map, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_HEIGHT / 4);
-}
-
-void my_mlx_clear_image(t_data *img)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (i < SCREEN_WIDTH)
-	{
-		while (j < SCREEN_HEIGHT)
-		{
-			my_mlx_pixel_put(img, i, j, 0x00000000);
-			j++;
-		}
-		i++;
-		j = 0;
-	}
-}
-
-int ft_key_hdl(int keycode, t_vars *vars)
-{
-	if (keycode == KEY_A)
+	if (keycode == KEY_ESC)
+		exit(0);
+	else if (keycode == KEY_A)
 		ft_move_map(vars->map, MOVE_STEP, 0, 0);
 	else if (keycode == KEY_D)
 		ft_move_map(vars->map, MOVE_STEP * (-1), 0, 0);
@@ -196,10 +88,8 @@ int ft_key_hdl(int keycode, t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	ft_draw_map(vars, vars->map);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	return 0;
+	return (0);
 }
-
-
 
 void	start_mlx(t_map *map)
 {
@@ -207,14 +97,15 @@ void	start_mlx(t_map *map)
 
 	vars.map = map;
 	vars.mlx = mlx_init();
+	if (vars.mlx == 0)
+		return ;
 	vars.win = mlx_new_window(vars.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "fdf");
-	mlx_key_hook(vars.win, &ft_key_hdl, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, &ft_key_hdl, &vars);
 	vars.img.img = mlx_new_image(vars.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel,
-										&vars.img.line_length, &vars.img.endian);
+			&vars.img.line_length, &vars.img.endian);
 	ft_centre_map(map);
 	ft_draw_map(&vars, map);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
 	mlx_loop(vars.mlx);
 }
-
