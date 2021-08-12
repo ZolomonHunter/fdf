@@ -4,6 +4,7 @@ SRCS = map_parse.c\
 	   map_operations.c\
 	   map_parse_utils.c\
 	   my_mlx_func.c\
+	   map_help.c\
 	   fdf.c
 OBJS = $(SRCS:.c=.o)
 NAME = fdf

@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 {
 	int		map_fd;
 	t_map	*map;
+	t_map	*screen;
 
 	map_fd = init_check(argc, argv[1]);
 	if (map_fd == -1)
@@ -47,9 +48,12 @@ int	main(int argc, char **argv)
 	if (close(map_fd) == -1)
 	{
 		perror(strerror(errno));
-		ft_free_map_norm(map, 0);
-		return (-1);
+		return (ft_map_clear(map));
 	}
-	start_mlx(map);
+	screen = ft_copy_map(map);
+	if (screen == 0)
+		return (ft_map_clear(map));
+	start_mlx(map, screen);
 	ft_free_map_norm(map, 0);
+	ft_free_map_norm(screen, 0);
 }

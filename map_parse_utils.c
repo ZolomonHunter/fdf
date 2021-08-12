@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static int	ft_map_clear(t_map *map, char *line)
+int	ft_map_clear(t_map *map)
 {
 	t_line	*cur;
 	t_line	*next;
@@ -30,20 +30,21 @@ static int	ft_map_clear(t_map *map, char *line)
 		}
 		free(cur->p_arr);
 		free(cur);
-		map->first_line = 0;
 	}
 	if (map && map->center)
 		free(map->center);
+	if (map && map->angle)
+		free(map->angle);
 	if (map)
 		free(map);
-	if (line)
-		free(line);
 	return (0);
 }
 
 t_map	*ft_free_map_norm(t_map *map, char *line)
 {
-	ft_map_clear(map, line);
+	ft_map_clear(map);
+	if (line)
+		free(line);
 	return (0);
 }
 
@@ -56,7 +57,10 @@ t_line	*ft_create_line(int width)
 		return (0);
 	new_line->p_arr = malloc(sizeof(t_point) * width);
 	if (!new_line->p_arr)
+	{
+		free(new_line);
 		return (0);
+	}
 	new_line->length = width;
 	return (new_line);
 }

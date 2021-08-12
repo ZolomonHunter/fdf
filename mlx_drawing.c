@@ -12,6 +12,26 @@
 
 #include "fdf.h"
 
+void	ft_centre_map(t_map *map)
+{
+	t_line	*line;
+	int		i;
+
+	i = 0;
+	line = map->first_line;
+	while (line)
+	{
+		while (i < line->length)
+		{
+			line->p_arr[i].x -= map->center->x;
+			line->p_arr[i].y -= map->center->y;
+			i++;
+		}
+		line = line->next;
+		i = 0;
+	}
+}
+
 void	ft_draw_line(t_point *a, t_point *b, t_vars *vars)
 {
 	if (fabs(b->x - a->x) == 0)
@@ -67,35 +87,36 @@ int	ft_key_hdl(int keycode, t_vars *vars)
 	if (keycode == KEY_ESC)
 		exit(0);
 	else if (keycode == KEY_A)
-		ft_move_map(vars->map, MOVE_STEP, 0, 0);
+		ft_move_screen(vars->map, vars->screen, MOVE_STEP, 0);
 	else if (keycode == KEY_D)
-		ft_move_map(vars->map, MOVE_STEP * (-1), 0, 0);
+		ft_move_screen(vars->map, vars->screen, MOVE_STEP * (-1), 0);
 	else if (keycode == KEY_W)
-		ft_move_map(vars->map, 0, MOVE_STEP, 0);
+		ft_move_screen(vars->map, vars->screen, 0, MOVE_STEP);
 	else if (keycode == KEY_S)
-		ft_move_map(vars->map, 0, MOVE_STEP * (-1), 0);
+		ft_move_screen(vars->map, vars->screen, 0, MOVE_STEP * (-1));
 	else if (keycode == KEY_Z)
-		ft_rotate_map(vars->map, ROTATE_STEP, 'z');
+		ft_rotate_screen(vars->screen, vars->map, ROTATE_STEP, 'z');
 	else if (keycode == KEY_X)
-		ft_rotate_map(vars->map, ROTATE_STEP, 'x');
+		ft_rotate_screen(vars->screen, vars->map, ROTATE_STEP, 'y');
 	else if (keycode == KEY_C)
-		ft_rotate_map(vars->map, ROTATE_STEP, 'y');
+		ft_rotate_screen(vars->screen, vars->map, ROTATE_STEP, 'x');
 	else if (keycode == KEY_PLUS)
-		ft_zoom_map(vars->map, ZOOM_STEP);
+		ft_zoom_screen(vars->map, vars->screen, ZOOM_STEP);
 	else if (keycode == KEY_MINUS)
-		ft_zoom_map(vars->map, 1 / ZOOM_STEP);
+		ft_zoom_screen(vars->map, vars->screen, 1 / ZOOM_STEP);
 	my_mlx_clear_image(&vars->img);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
-	ft_draw_map(vars, vars->map);
+	ft_draw_map(vars, vars->screen);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img.img, 0, 0);
 	return (0);
 }
 
-void	start_mlx(t_map *map)
+void	start_mlx(t_map *map, t_map *screen)
 {
 	t_vars	vars;
 
 	vars.map = map;
+	vars.screen = screen;
 	vars.mlx = mlx_init();
 	if (vars.mlx == 0)
 		return ;
@@ -105,7 +126,12 @@ void	start_mlx(t_map *map)
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel,
 			&vars.img.line_length, &vars.img.endian);
 	ft_centre_map(map);
-	ft_draw_map(&vars, map);
+	ft_move_screen(map, screen, SCREEN_WIDTH / 5 * 2,
+		   SCREEN_HEIGHT / 5 * 3 - map->height);
+	ft_zoom_screen(map, screen, SCREEN_HEIGHT / map->height / 2);
+	ft_rotate_screen(screen, map, 45, 'y');
+	ft_rotate_screen(screen, map, -30, 'x');
+	ft_draw_map(&vars, screen);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
 	mlx_loop(vars.mlx);
 }

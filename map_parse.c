@@ -62,10 +62,16 @@ t_map	*ft_end_parse_map(t_map *map, char *line, int line_number)
 	map->center = malloc(sizeof(t_point));
 	if (map->center == 0)
 		return (ft_free_map_norm(map, line));
+	map->angle = malloc(sizeof(t_point));
+	if (map->angle == 0)
+		return (ft_free_map_norm(map, line));
 	map->center->x = (double)map->first_line->length / 2 - 1;
 	map->center->y = (double)(map->height - 1) / 2;
 	map->center->z = 0;
 	map->center->color = 0x00FF0000;
+	map->angle->x = 0;
+	map->angle->y = 0;
+	map->angle->z = 0;
 	return (map);
 }
 

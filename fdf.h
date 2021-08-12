@@ -22,29 +22,30 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 
-typedef struct	s_point
+typedef struct s_point
 {
-	double 			x;
-	double 			y;
-	double 			z;
+	double			x;
+	double			y;
+	double			z;
 	unsigned int	color;
-}				t_point;
+}					t_point;
 
-typedef struct 		s_line
+typedef struct s_line
 {
-	int 			length;
-	t_point 		*p_arr;
+	int				length;
+	t_point			*p_arr;
 	struct s_line	*next;
 }					t_line;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	int 		height;
-	t_line 		*first_line;
-	t_point 	*center;
+	int			height;
+	t_line		*first_line;
+	t_point		*center;
+	t_point		*angle;
 }				t_map;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*img;
 	char		*addr;
@@ -53,34 +54,40 @@ typedef struct	s_data
 	int			endian;
 }				t_data;
 
-typedef struct	s_vars
+typedef struct s_vars
 {
+	t_data	img;
 	void	*mlx;
 	void	*win;
-	t_data 	img;
 	t_map	*map;
+	t_map	*screen;
 }				t_vars;
 
-t_map	*ft_parse_map(int map_fd);
-void	start_mlx(t_map *map);
-void	my_mlx_pixel_put(t_data *img, int x, int y, int color);
-void	my_mlx_clear_image(t_data *img);
-void	ft_line_x_iter(t_point *a, t_point *b, t_vars *vars);
-void	ft_line_y_iter(t_point *a, t_point *b, t_vars *vars);
-unsigned int ft_get_max_color(t_point *f, t_point *s);
-void	ft_move_map(t_map *map, double x, double y, double z);
-void	ft_zoom_map(t_map *map, double scale);
-void	ft_rotate_map(t_map *map, int angle, char axis);
-void	ft_centre_map(t_map *map);
-t_map *ft_free_map_norm(t_map *map, char *line);
-int		ft_fill_line(char **splited_line, t_map *map, int line_number, int width);
-void	ft_set_color(t_point *point, char *info);
-
+t_map			*ft_parse_map(int map_fd);
+void			start_mlx(t_map *map, t_map *screen);
+void			my_mlx_pixel_put(t_data *img, int x, int y, int color);
+void			my_mlx_clear_image(t_data *img);
+void			ft_line_x_iter(t_point *a, t_point *b, t_vars *vars);
+void			ft_line_y_iter(t_point *a, t_point *b, t_vars *vars);
+unsigned int	ft_get_max_color(t_point *f, t_point *s);
+t_map			*ft_free_map_norm(t_map *map, char *line);
+int				ft_fill_line(char **splited_line, t_map *map,
+					int line_number, int width);
+void			ft_set_color(t_point *point, char *info);
+int				ft_map_clear(t_map *map);
+t_map			*ft_copy_map(t_map *map);
+void			ft_centre_map(t_map *map);
+void			ft_zoom_screen(t_map *map, t_map *screen, double scale);
+void			ft_move_screen(t_map *map, t_map *screen, double x, double y);
+void			ft_push_line(t_map *map, t_line *new_line);
+void			ft_rotate_screen(t_map *screen, t_map *map,
+					double angle, double axis);
+void			ft_move_map(t_map *map, double x, double y);
 
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1080
-# define MOVE_STEP 5
-# define ROTATE_STEP 2
+# define MOVE_STEP 10
+# define ROTATE_STEP 1
 # define ZOOM_STEP 1.05
 # define KEY_A 0
 # define KEY_S 1
